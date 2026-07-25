@@ -22,7 +22,7 @@ public class PlayerHud : MonoBehaviour
     }
     private void Start()
     {
-        hpPips.Add(root.Q("Pip1") as Image);
+        hpPips.Add(root.Q<Image>("Pip1"));
         hpPips.Add(root.Q<Image>("Pip2"));
         hpPips.Add(root.Q<Image>("Pip3"));
         hpPips.Add(root.Q<Image>("Pip4"));

@@ -1,0 +1,8 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/USS/Menu.uss?fileID=7433441132597879392&amp;guid=ca0b5595faa82cf42a88233f482148f6&amp;type=3#Menu"/>
+    <ui:VisualElement name="Container" style="flex-grow: 1; align-items: center; background-image: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-6527069497977903076&amp;guid=4199b60f002c60e4b816ff49da5068f0&amp;type=3#console.warnicon@2x&quot;);">
+        <ui:Label text="Game" name="Title" class="title" style="font-size: 100px; -unity-text-align: upper-center;"/>
+        <ui:Button text=" Level Select" name="LevelSelect" class="button"/>
+        <ui:Button text="Quit" name="Quit" class="button"/>
+    </ui:VisualElement>
+</ui:UXML>
