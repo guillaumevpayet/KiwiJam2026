@@ -128,8 +128,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50a4c159705f4e5cabf0344093720a73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StringingController
-  jointPrefab: {fileID: 2609460271304699195, guid: f0a6ed77e497647ceaf8fc3bb25b2564, type: 3}
+  springJointPrefab: {fileID: 2609460271304699195, guid: f0a6ed77e497647ceaf8fc3bb25b2564, type: 3}
+  hingeJointPrefab: {fileID: 2609460271304699195, guid: e393f91b7faaff4d4921d3b0dc4e5e79, type: 3}
   pointerPrefab: {fileID: 3412091620429802804, guid: ec6623881c1afc2a8854ab933008f5d7, type: 3}
+  hingeJointAnchor: {fileID: 7041683540777143771}
 --- !u!120 &8266366389736690156
 LineRenderer:
   serializedVersion: 3

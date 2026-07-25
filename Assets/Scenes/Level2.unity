@@ -2520,14 +2520,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1842179318879184, guid: 435490062790ad10ea043d36f2640a9c, type: 3}
-      propertyPath: hingeJointPrefab
-      value: 
-      objectReference: {fileID: 2609460271304699195, guid: e393f91b7faaff4d4921d3b0dc4e5e79, type: 3}
-    - target: {fileID: 1842179318879184, guid: 435490062790ad10ea043d36f2640a9c, type: 3}
-      propertyPath: springJointPrefab
-      value: 
-      objectReference: {fileID: 2609460271304699195, guid: f0a6ed77e497647ceaf8fc3bb25b2564, type: 3}
     - target: {fileID: 514126846411624332, guid: 435490062790ad10ea043d36f2640a9c, type: 3}
       propertyPath: m_Constraints
       value: 8

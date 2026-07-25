@@ -7,6 +7,7 @@ public class StringingController : MonoBehaviour
     [SerializeField] private GameObject springJointPrefab;
     [SerializeField] private GameObject hingeJointPrefab;
     [SerializeField] private GameObject pointerPrefab;
+    [SerializeField] private Rigidbody hingeJointAnchor;
     
     private PlayerInput _playerInput;
     private Rigidbody _rigidbody;
@@ -15,7 +16,8 @@ public class StringingController : MonoBehaviour
     private Camera _mainCamera;
     
     private GameObject _pointer;
-    private readonly SpringJointController[] _joints = new SpringJointController[4];
+    private readonly SpringJointController[] _springJoints = new SpringJointController[4];
+    private readonly HingeJointController[] _hingeJoints = new HingeJointController[4];
 
     private void Awake()
     {
@@ -65,12 +67,12 @@ public class StringingController : MonoBehaviour
         
         List<Vector3> positions = new List<Vector3>();
 
-        for (var i = 0; i < _joints.Length; i++)
+        for (var i = 0; i < _springJoints.Length; i++)
         {
-            if (_joints[i] != null)
+            if (_springJoints[i] != null)
             {
                 positions.Add(transform.position);
-                positions.Add(_joints[i].transform.position);
+                positions.Add(_springJoints[i].transform.position);
                 positions.Add(transform.position);
             }
         }
@@ -83,13 +85,13 @@ public class StringingController : MonoBehaviour
         {
             _lineRenderer.positionCount = positions.Count;
             _lineRenderer.SetPositions(positions.ToArray());
-            _lineRenderer.enabled = true;
+            // _lineRenderer.enabled = true;
         }
     }
 
     private void OnActionTriggered(InputAction.CallbackContext context)
     {
-        for (var i = 0; i < _joints.Length; i++)
+        for (var i = 0; i < _springJoints.Length; i++)
         {
             HandleStringInput(context, i);
         }
@@ -104,7 +106,7 @@ public class StringingController : MonoBehaviour
             return;
         }
 
-        var joint = _joints[index];
+        var joint = _springJoints[index];
         
         if (context.started)
         {
@@ -113,15 +115,23 @@ public class StringingController : MonoBehaviour
                 return;
             }
             
-            var jointGameObject = Instantiate(springJointPrefab, _pointer.transform.position, Quaternion.identity);
-            var newJoint = jointGameObject.GetComponent<SpringJointController>();
-            newJoint.Initialize(_rigidbody, index);
-            _joints[index] = newJoint;
+            var springJointGameObject = Instantiate(springJointPrefab, _pointer.transform.position, Quaternion.identity);
+            var newSpringJoint = springJointGameObject.GetComponent<SpringJointController>();
+            newSpringJoint.Initialize(_rigidbody, index);
+            _springJoints[index] = newSpringJoint;
+            
+            var hingeJointGameObject = Instantiate(hingeJointPrefab, _pointer.transform.position, Quaternion.identity);
+            var newHingeJoint = hingeJointGameObject.GetComponent<HingeJointController>();
+            newHingeJoint.Initialize(hingeJointAnchor, index);
+            _hingeJoints[index] = newHingeJoint;
         }
         else if (context.canceled && joint != null)
         {
             Destroy(joint.gameObject);
-            _joints[index] = null;
+            _springJoints[index] = null;
+            
+            Destroy(_hingeJoints[index].gameObject);
+            _hingeJoints[index] = null;
         }
     }
 }

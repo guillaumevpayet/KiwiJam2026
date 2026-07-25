@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58371726de7394e4e8191c467e6f120b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HingeJointController
-  segmentPrefab: {fileID: 0}
+  segmentPrefab: {fileID: 1064012077786604783, guid: df685db4e2beb8483be854af34dc8516, type: 3}
   materials:
   - {fileID: 2100000, guid: a36c778fbe2f881868394970151dc1fa, type: 2}
   - {fileID: 2100000, guid: b18c990c11ecace849017e9d6eb018e4, type: 2}
