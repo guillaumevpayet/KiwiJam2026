@@ -1,0 +1,11 @@
+:root {
+}
+
+.levelProgress {
+    font-size: 17px;
+}
+
+.pip {
+    margin-right: 40px;
+    margin-left: 40px;
+}
