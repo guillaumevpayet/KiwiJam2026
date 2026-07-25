@@ -4,7 +4,8 @@ using UnityEngine.InputSystem;
 
 public class StringingController : MonoBehaviour
 {
-    [SerializeField] private GameObject jointPrefab;
+    [SerializeField] private GameObject springJointPrefab;
+    [SerializeField] private GameObject hingeJointPrefab;
     [SerializeField] private GameObject pointerPrefab;
     
     private PlayerInput _playerInput;
@@ -112,7 +113,7 @@ public class StringingController : MonoBehaviour
                 return;
             }
             
-            var jointGameObject = Instantiate(jointPrefab, _pointer.transform.position, Quaternion.identity);
+            var jointGameObject = Instantiate(springJointPrefab, _pointer.transform.position, Quaternion.identity);
             var newJoint = jointGameObject.GetComponent<SpringJointController>();
             newJoint.Initialize(_rigidbody, index);
             _joints[index] = newJoint;
