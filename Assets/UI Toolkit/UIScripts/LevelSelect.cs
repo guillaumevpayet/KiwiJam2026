@@ -9,6 +9,7 @@ public class LevelSelect : MonoBehaviour
     private VisualElement root;
     private Button level1Button;
     private Button level2Button;
+    private Button level3Button;
     private Button returnButton;
 
     private void OnEnable()
@@ -23,6 +24,9 @@ public class LevelSelect : MonoBehaviour
         level2Button = root.Q<Button>("Level2");
         level2Button.RegisterCallback<ClickEvent>(OnLevel2Click);
 
+        level3Button = root.Q<Button>("Level3");
+        level3Button.RegisterCallback<ClickEvent>(OnLevel3Click);
+
         returnButton = root.Q<Button>("Return");
         returnButton.RegisterCallback<ClickEvent>(OnReturnClick);
     }
@@ -30,7 +34,8 @@ public class LevelSelect : MonoBehaviour
     void OnDisable()
     {
         level1Button.UnregisterCallback<ClickEvent>(OnLevel1Click);
-        level2Button.UnregisterCallback<ClickEvent>(OnLevel1Click);
+        level2Button.UnregisterCallback<ClickEvent>(OnLevel2Click);
+        level3Button.UnregisterCallback<ClickEvent>(OnLevel3Click);
         returnButton.UnregisterCallback<ClickEvent>(OnReturnClick);
     }
 
@@ -44,6 +49,11 @@ public class LevelSelect : MonoBehaviour
     {
         CurrentLevel.Level = "Level2";
         SceneManager.LoadScene("Level2");
+    }
+    private void OnLevel3Click(ClickEvent evt)
+    {
+        CurrentLevel.Level = "Level3";
+        SceneManager.LoadScene("Level3");
     }
 
     private void OnReturnClick(ClickEvent evt)

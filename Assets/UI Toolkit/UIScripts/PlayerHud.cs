@@ -14,6 +14,7 @@ public class PlayerHud : MonoBehaviour
     private int hpLeft = 5;
     private VisualElement root;
     private ProgressBar levelProgress;
+    private Slider levelProgress2;
 
 
     private void OnEnable()
@@ -31,7 +32,8 @@ public class PlayerHud : MonoBehaviour
 
         levelProgress = root.Q<ProgressBar>("LevelProgress");
         levelProgress.highValue = victoryHeight;
-
+        levelProgress2 = root.Q<Slider>("LevelProgress2");
+        levelProgress2.highValue = victoryHeight;
     }
 
     private void Update()
@@ -42,6 +44,7 @@ public class PlayerHud : MonoBehaviour
             SceneManager.LoadScene("Victory");
         }
         levelProgress.value = player.transform.position.y;
+        levelProgress2.value = player.transform.position.y;
     }
 
     private void HealthDrain()

@@ -4,6 +4,7 @@
         <ui:Label text="Select Level" name="Title" class="title" style="font-size: 100px; -unity-text-align: upper-center;"/>
         <ui:Button text="Level 1" name="Level1" class="button"/>
         <ui:Button text="Level 2" name="Level2" class="button"/>
+        <ui:Button text="Level 3" name="Level3" class="button"/>
         <ui:Button text="Return to Menu" name="Return" class="button"/>
     </ui:VisualElement>
 </ui:UXML>
