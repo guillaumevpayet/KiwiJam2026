@@ -14,7 +14,7 @@ public class StringingController : MonoBehaviour
     private Camera _mainCamera;
     
     private GameObject _pointer;
-    private readonly JointController[] _joints = new JointController[4];
+    private readonly SpringJointController[] _joints = new SpringJointController[4];
 
     private void Awake()
     {
@@ -113,7 +113,7 @@ public class StringingController : MonoBehaviour
             }
             
             var jointGameObject = Instantiate(jointPrefab, _pointer.transform.position, Quaternion.identity);
-            var newJoint = jointGameObject.GetComponent<JointController>();
+            var newJoint = jointGameObject.GetComponent<SpringJointController>();
             newJoint.Initialize(_rigidbody, index);
             _joints[index] = newJoint;
         }

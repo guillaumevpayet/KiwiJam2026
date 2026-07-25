@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2939907701804159651}
   - component: {fileID: 4314783053168648702}
   m_Layer: 0
-  m_Name: Joint
+  m_Name: Spring Joint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

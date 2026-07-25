@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class JointController : MonoBehaviour
+public class SpringJointController : MonoBehaviour
 {
     [SerializeField] private float elasticity = 1f;
 
