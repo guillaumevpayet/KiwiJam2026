@@ -1,15 +1,20 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/USS/PlayerHud.uss?fileID=7433441132597879392&amp;guid=8f0dbc211d19c254cb8d77d5af577440&amp;type=3#PlayerHud"/>
-    <ui:VisualElement name="HealthBarBackground" style="flex-grow: 1;">
-        <ui:VisualElement name="HealthPips" style="flex-grow: 1; align-items: flex-start; flex-direction: row; justify-content: center;">
-            <ui:Image name="Pip1" enabled="true" source="project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=3506167780502562645&amp;guid=4199b60f002c60e4b816ff49da5068f0&amp;type=3#console.erroricon@2x" class="pip" style="width: 100px; height: 100px; background-image: none; align-items: center; padding-right: 0; padding-left: 0; display: flex; visibility: visible;"/>
-            <ui:Image name="Pip2" enabled="true" source="project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=3506167780502562645&amp;guid=4199b60f002c60e4b816ff49da5068f0&amp;type=3#console.erroricon@2x" class="pip" style="width: 100px; height: 100px; background-image: none; align-items: center; padding-right: 0; padding-left: 0; display: flex; visibility: visible;"/>
-            <ui:Image name="Pip3" enabled="true" source="project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=3506167780502562645&amp;guid=4199b60f002c60e4b816ff49da5068f0&amp;type=3#console.erroricon@2x" class="pip" style="width: 100px; height: 100px; background-image: none; align-items: center; padding-right: 0; padding-left: 0; display: flex; visibility: visible;"/>
-            <ui:Image name="Pip4" enabled="true" source="project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=3506167780502562645&amp;guid=4199b60f002c60e4b816ff49da5068f0&amp;type=3#console.erroricon@2x" class="pip" style="width: 100px; height: 100px; background-image: none; align-items: center; padding-right: 0; padding-left: 0; display: flex; visibility: visible;"/>
-            <ui:Image name="Pip5" enabled="true" source="project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=3506167780502562645&amp;guid=4199b60f002c60e4b816ff49da5068f0&amp;type=3#console.erroricon@2x" class="pip" style="width: 100px; height: 100px; background-image: none; align-items: center; padding-right: 0; padding-left: 0; display: flex; visibility: visible;"/>
+    <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+        <ui:VisualElement style="flex-grow: 1;">
+            <ui:VisualElement name="HealthBarBackground" style="flex-grow: 1;">
+                <ui:VisualElement name="HealthPips" style="flex-grow: 1; align-items: flex-start; flex-direction: row; justify-content: center;">
+                    <ui:Image name="Pip1" enabled="true" source="project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=3506167780502562645&amp;guid=4199b60f002c60e4b816ff49da5068f0&amp;type=3#console.erroricon@2x" class="pip" style="width: 100px; height: 100px; background-image: none; align-items: center; padding-right: 0; padding-left: 0; display: flex; visibility: visible;"/>
+                    <ui:Image name="Pip2" enabled="true" source="project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=3506167780502562645&amp;guid=4199b60f002c60e4b816ff49da5068f0&amp;type=3#console.erroricon@2x" class="pip" style="width: 100px; height: 100px; background-image: none; align-items: center; padding-right: 0; padding-left: 0; display: flex; visibility: visible;"/>
+                    <ui:Image name="Pip3" enabled="true" source="project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=3506167780502562645&amp;guid=4199b60f002c60e4b816ff49da5068f0&amp;type=3#console.erroricon@2x" class="pip" style="width: 100px; height: 100px; background-image: none; align-items: center; padding-right: 0; padding-left: 0; display: flex; visibility: visible;"/>
+                    <ui:Image name="Pip4" enabled="true" source="project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=3506167780502562645&amp;guid=4199b60f002c60e4b816ff49da5068f0&amp;type=3#console.erroricon@2x" class="pip" style="width: 100px; height: 100px; background-image: none; align-items: center; padding-right: 0; padding-left: 0; display: flex; visibility: visible;"/>
+                    <ui:Image name="Pip5" enabled="true" source="project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=3506167780502562645&amp;guid=4199b60f002c60e4b816ff49da5068f0&amp;type=3#console.erroricon@2x" class="pip" style="width: 100px; height: 100px; background-image: none; align-items: center; padding-right: 0; padding-left: 0; display: flex; visibility: visible;"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="Container" style="flex-grow: 1; justify-content: flex-end;">
+                <ui:ProgressBar value="22" title="Level Progress" name="LevelProgress" enabled="false" class="levelProgress" style="height: auto;"/>
+            </ui:VisualElement>
         </ui:VisualElement>
-    </ui:VisualElement>
-    <ui:VisualElement name="Container" style="flex-grow: 1; justify-content: flex-end;">
-        <ui:ProgressBar value="22" title="Level Progress" name="LevelProgress" class="levelProgress"/>
+        <ui:Slider label="" value="42" high-value="100" direction="Vertical" focusable="false" name="LevelProgress2"/>
     </ui:VisualElement>
 </ui:UXML>
