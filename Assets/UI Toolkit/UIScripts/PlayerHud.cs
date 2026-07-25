@@ -6,9 +6,13 @@ public class PlayerHud : MonoBehaviour
 {
     public UIDocument UIDoc;
     public int hpDrainInterval;
+    public GameObject player;
+
     private List<Image> hpPips = new List<Image>();
     private int hpLeft = 5;
     VisualElement root;
+    ProgressBar levelProgress;
+
 
     private void OnEnable()
     {
@@ -21,7 +25,14 @@ public class PlayerHud : MonoBehaviour
         hpPips.Add(root.Q<Image>("Pip3"));
         hpPips.Add(root.Q<Image>("Pip4"));
         hpPips.Add(root.Q<Image>("Pip5"));
-        InvokeRepeating(nameof(HealthDrain),hpDrainInterval,hpDrainInterval); 
+        InvokeRepeating(nameof(HealthDrain),hpDrainInterval,hpDrainInterval);
+
+        levelProgress = root.Q<ProgressBar>("LevelProgress");
+    }
+
+    private void Update()
+    {
+        levelProgress.value = player.transform.position.y;
     }
 
     private void HealthDrain()
