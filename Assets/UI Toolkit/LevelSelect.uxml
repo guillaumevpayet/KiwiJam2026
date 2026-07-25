@@ -3,6 +3,7 @@
     <ui:VisualElement name="Container" style="flex-grow: 1; align-items: center; background-image: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-6527069497977903076&amp;guid=4199b60f002c60e4b816ff49da5068f0&amp;type=3#console.warnicon@2x&quot;);">
         <ui:Label text="Select Level" name="Title" class="title" style="font-size: 100px; -unity-text-align: upper-center;"/>
         <ui:Button text="Level 1" name="Level1" class="button"/>
+        <ui:Button text="Level 2" name="Level2" class="button"/>
         <ui:Button text="Return to Menu" name="Return" class="button"/>
     </ui:VisualElement>
 </ui:UXML>
