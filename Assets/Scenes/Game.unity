@@ -747,7 +747,7 @@ Transform:
   m_GameObject: {fileID: 682252344}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.7, y: 9.86, z: 0.45}
+  m_LocalPosition: {x: 5.29, y: 3.71, z: 0.45}
   m_LocalScale: {x: 5.7199, y: 5.7199, z: 5.7199}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -852,9 +852,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StringingController
   jointPrefab: {fileID: 2609460271304699195, guid: f0a6ed77e497647ceaf8fc3bb25b2564, type: 3}
   pointerPrefab: {fileID: 3412091620429802804, guid: ec6623881c1afc2a8854ab933008f5d7, type: 3}
-  yellow: {fileID: 2100000, guid: 5ec8f74737387f727b49d0b7901c019e, type: 2}
-  green: {fileID: 2100000, guid: a11d45b26a5e69100902bfcad05fc71e, type: 2}
-  elasticity: 0.1
 --- !u!114 &770507221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -893,7 +890,7 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 770507216}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -911,7 +908,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a11d45b26a5e69100902bfcad05fc71e, type: 2}
+  - {fileID: 2100000, guid: a36c778fbe2f881868394970151dc1fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -939,7 +936,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.1
+    widthMultiplier: 0.2
     widthCurve:
       serializedVersion: 2
       m_Curve:
