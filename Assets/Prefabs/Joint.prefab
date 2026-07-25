@@ -97,9 +97,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bc8750aa13cf593bb1de5e275dcf89c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JointController
-  elasticity: 0.2
-  materials:
-  - {fileID: 2100000, guid: a36c778fbe2f881868394970151dc1fa, type: 2}
-  - {fileID: 2100000, guid: b18c990c11ecace849017e9d6eb018e4, type: 2}
-  - {fileID: 2100000, guid: 0fedc439c1b6a6a6281f5e54ec3ca420, type: 2}
-  - {fileID: 2100000, guid: 6ff607eeb813c5b31b5c005f3a2a812a, type: 2}
+  elasticity: 0.6

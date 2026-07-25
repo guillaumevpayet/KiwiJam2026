@@ -17,7 +17,7 @@ public class JointController : MonoBehaviour
         _springJoint = GetComponent<SpringJoint>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         _springJoint.maxDistance = Mathf.Pow(0.9f, elasticity) * _springJoint.maxDistance;
     }
