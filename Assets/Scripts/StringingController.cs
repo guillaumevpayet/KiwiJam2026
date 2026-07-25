@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,16 +6,15 @@ public class StringingController : MonoBehaviour
 {
     [SerializeField] private GameObject jointPrefab;
     [SerializeField] private GameObject pointerPrefab;
-    [SerializeField] private Material yellow;
-    [SerializeField] private Material green;
-    [SerializeField] private float elasticity = 1f;
     
     private PlayerInput _playerInput;
     private Rigidbody _rigidbody;
-    private GameObject _pointer;
-    private SpringJoint _springJoint;
     private LineRenderer _lineRenderer;
+    
     private Camera _mainCamera;
+    
+    private GameObject _pointer;
+    private readonly JointController[] _joints = new JointController[4];
 
     private void Awake()
     {
@@ -61,52 +61,66 @@ public class StringingController : MonoBehaviour
                 _pointer.transform.position = pointedPosition;
             }
         }
+        
+        List<Vector3> positions = new List<Vector3>();
 
-        if (_springJoint == null)
+        for (var i = 0; i < _joints.Length; i++)
         {
-            return;
+            if (_joints[i] != null)
+            {
+                positions.Add(transform.position);
+                positions.Add(_joints[i].transform.position);
+                positions.Add(transform.position);
+            }
         }
 
-        _springJoint.maxDistance = Mathf.Pow(0.9f, elasticity) * _springJoint.maxDistance;
-        
-        Vector3[] positions = { transform.position, _springJoint.transform.position };
-        _lineRenderer.SetPositions(positions);
+        if (positions.Count == 0)
+        {
+            _lineRenderer.enabled = false;
+        }
+        else
+        {
+            _lineRenderer.positionCount = positions.Count;
+            _lineRenderer.SetPositions(positions.ToArray());
+            _lineRenderer.enabled = true;
+        }
     }
 
     private void OnActionTriggered(InputAction.CallbackContext context)
     {
-        if (context.action.name != "Attack")
+        for (var i = 0; i < _joints.Length; i++)
+        {
+            HandleStringInput(context, i);
+        }
+    }
+
+    private void HandleStringInput(InputAction.CallbackContext context, int index)
+    {
+        var actionName = $"String {index + 1}";
+        
+        if (context.action.name != actionName)
         {
             return;
         }
 
-        if (_pointer == null)
-        {
-            return;
-        }
-
-        _pointer.GetComponent<Renderer>().material = context.started ? green : yellow;
+        var joint = _joints[index];
         
         if (context.started)
         {
-            if (_springJoint != null)
+            if (joint != null || _pointer == null)
             {
                 return;
             }
             
-            var joint = Instantiate(jointPrefab, _pointer.transform.position, Quaternion.identity);
-            _springJoint = joint.GetComponent<SpringJoint>();
-            _springJoint.connectedBody = _rigidbody;
-            _springJoint.maxDistance = Vector3.Distance(transform.position, _pointer.transform.position);
-            Vector3[] positions = { transform.position, _pointer.transform.position };
-            _lineRenderer.SetPositions(positions);
-            _lineRenderer.enabled = true;
+            var jointGameObject = Instantiate(jointPrefab, _pointer.transform.position, Quaternion.identity);
+            var newJoint = jointGameObject.GetComponent<JointController>();
+            newJoint.Initialize(_rigidbody, index);
+            _joints[index] = newJoint;
         }
-        else if (context.canceled && _springJoint != null)
+        else if (context.canceled && joint != null)
         {
-            Destroy(_springJoint.gameObject);
-            _springJoint = null;
-            _lineRenderer.enabled = false;
+            Destroy(joint.gameObject);
+            _joints[index] = null;
         }
     }
 }
