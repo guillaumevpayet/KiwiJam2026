@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class PlayerHud : MonoBehaviour
@@ -7,11 +8,12 @@ public class PlayerHud : MonoBehaviour
     public UIDocument UIDoc;
     public int hpDrainInterval;
     public GameObject player;
+    public int victoryHeight;
 
     private List<Image> hpPips = new List<Image>();
     private int hpLeft = 5;
-    VisualElement root;
-    ProgressBar levelProgress;
+    private VisualElement root;
+    private ProgressBar levelProgress;
 
 
     private void OnEnable()
@@ -28,10 +30,17 @@ public class PlayerHud : MonoBehaviour
         InvokeRepeating(nameof(HealthDrain),hpDrainInterval,hpDrainInterval);
 
         levelProgress = root.Q<ProgressBar>("LevelProgress");
+        levelProgress.highValue = victoryHeight;
+
     }
 
     private void Update()
     {
+        float height = player.transform.position.y;
+        if (victoryHeight < height)
+        {
+            SceneManager.LoadScene("Victory");
+        }
         levelProgress.value = player.transform.position.y;
     }
 
@@ -55,11 +64,10 @@ public class PlayerHud : MonoBehaviour
         {
             if (hpLeft <= 1)
             {
-                Debug.Log("Player Dead!!!!!");
+                SceneManager.LoadScene("Defeat");
             }
             else
             {
-                Debug.Log("PANIC");
                 hpLeft -= 1;
                 hpPips[hpLeft].visible = false;
             }
