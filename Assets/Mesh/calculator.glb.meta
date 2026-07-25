@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 63c5205009ad432bfba6cc41cf11c25e
+guid: 5eb2a727f6e52dc1c8505f91969a270c
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -40,7 +40,7 @@ ScriptedImporter:
   _generateMipMaps: 1
   _useSceneNameIdentifier: 1
   _textureCompression: -50
-  _gltfAsset: '<b>Generator: </b>Khronos glTF Blender I/O v5.2.39
+  _gltfAsset: '<b>Generator: </b>Khronos glTF Blender I/O v4.5.48
 
     <b>Version:
     </b>2.0
