@@ -36,7 +36,7 @@ public class DefeatScreen : MonoBehaviour
 
     private void OnReturnToMenuClick(ClickEvent evt)
     {
-        Debug.Log("Try again coward!");
+        SceneManager.LoadScene("Main");
     }
 
 
