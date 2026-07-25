@@ -4,50 +4,31 @@ public class HingeJointController : MonoBehaviour
 {
     [SerializeField] private GameObject segmentPrefab;
     [SerializeField] private Material[] materials;
-
-    private HingeJoint _hingeJoint;
+    [SerializeField] private float segmentSize = 0.15f;
     
-    private Rigidbody _connectedBody;
+    private HingeJointAnchor _anchor;
     private GameObject[] _segments;
 
     private float _length;
     private int _segmentCount;
     private int _index;
 
-    public void Initialize(Rigidbody connectedBody, int index)
+    public void Initialize(HingeJointAnchor anchor, int index)
     {
-        _connectedBody = connectedBody;
+        _anchor = anchor;
         _index = index;
-        var connectionVector = transform.position - connectedBody.transform.position;
+        var connectionVector = _anchor.transform.position - transform.position;
         _length = connectionVector.magnitude;
+        _segmentCount = Mathf.CeilToInt(_length / (2f * segmentSize));
         var direction = connectionVector / _length;
-        _segmentCount = Mathf.CeilToInt(_length / 0.5f);
-        _segments = new GameObject[_segmentCount];
-
-        for (var i = 0; i < _segmentCount; i++)
-        {
-            var segmentPosition = connectedBody.transform.position + 0.5f * i * direction;
-            var segment = Instantiate(segmentPrefab, segmentPosition, Quaternion.FromToRotation(Vector3.up, direction));
-            segment.transform.parent = transform;
-            var segmentJoint = segment.GetComponent<HingeJoint>();
-            segmentJoint.connectedBody = i == 0 ? connectedBody : _segments[i - 1].GetComponent<Rigidbody>();
-            segment.GetComponentInChildren<MeshRenderer>().material = materials[index];
-            _segments[i] = segment;
-        }
-
-        _hingeJoint.connectedBody = _segments[_segmentCount - 1].GetComponent<Rigidbody>();
-    }
-
-    private void Awake()
-    {
-        _hingeJoint = GetComponent<HingeJoint>();
+        RecalculateSegments(direction);
     }
 
     private void FixedUpdate()
     {
-        var connectionVector = transform.position - _connectedBody.transform.position;
+        var connectionVector = transform.position - _anchor.transform.position;
         _length = connectionVector.magnitude;
-        var segmentCount = Mathf.CeilToInt(_length / 0.5f);
+        var segmentCount = Mathf.CeilToInt(_length / (2f * segmentSize));
 
         if (segmentCount == _segmentCount)
         {
@@ -58,21 +39,28 @@ public class HingeJointController : MonoBehaviour
         {
             Destroy(segment);
         }
-        
-        _segments = new GameObject[_segmentCount];
+
+        _segmentCount = segmentCount;
         var direction = connectionVector / _length;
+        RecalculateSegments(direction);
+    }
+
+    private void RecalculateSegments(Vector3 direction)
+    {
+        _segments = new GameObject[_segmentCount];
 
         for (var i = 0; i < _segmentCount; i++)
         {
-            var segmentPosition = _connectedBody.transform.position + 0.5f * i * direction;
+            var segmentPosition = transform.position + 2f * segmentSize * i * -direction;
             var segment = Instantiate(segmentPrefab, segmentPosition, Quaternion.FromToRotation(Vector3.up, direction));
             segment.transform.parent = transform;
             var segmentJoint = segment.GetComponent<HingeJoint>();
-            segmentJoint.connectedBody = i == 0 ? _connectedBody : _segments[i - 1].GetComponent<Rigidbody>();
-            segment.GetComponentInChildren<MeshRenderer>().material = materials[_index];
+            segmentJoint.connectedBody = i == 0 ? GetComponent<Rigidbody>() : _segments[i - 1].GetComponent<Rigidbody>();
+            segment.GetComponent<HingeJointSegment>().Initialize(materials[_index]);
             _segments[i] = segment;
         }
 
-        _segmentCount = segmentCount;
+        _anchor.transform.parent = transform;
+        _anchor.GetComponent<HingeJoint>().connectedBody = _segments[_segmentCount - 1].GetComponent<Rigidbody>();
     }
 }

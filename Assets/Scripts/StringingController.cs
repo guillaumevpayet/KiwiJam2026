@@ -7,7 +7,7 @@ public class StringingController : MonoBehaviour
     [SerializeField] private GameObject springJointPrefab;
     [SerializeField] private GameObject hingeJointPrefab;
     [SerializeField] private GameObject pointerPrefab;
-    [SerializeField] private Rigidbody hingeJointAnchor;
+    [SerializeField] private GameObject hingeJointAnchorPrefab;
     
     private PlayerInput _playerInput;
     private Rigidbody _rigidbody;
@@ -65,16 +65,18 @@ public class StringingController : MonoBehaviour
             }
         }
         
-        List<Vector3> positions = new List<Vector3>();
+        var positions = new List<Vector3>();
 
-        for (var i = 0; i < _springJoints.Length; i++)
+        foreach (var t in _springJoints)
         {
-            if (_springJoints[i] != null)
+            if (t == null)
             {
-                positions.Add(transform.position);
-                positions.Add(_springJoints[i].transform.position);
-                positions.Add(transform.position);
+                continue;
             }
+            
+            positions.Add(transform.position);
+            positions.Add(t.transform.position);
+            positions.Add(transform.position);
         }
 
         if (positions.Count == 0)
@@ -122,6 +124,9 @@ public class StringingController : MonoBehaviour
             
             var hingeJointGameObject = Instantiate(hingeJointPrefab, _pointer.transform.position, Quaternion.identity);
             var newHingeJoint = hingeJointGameObject.GetComponent<HingeJointController>();
+            var hingeJointAnchorGameObject = Instantiate(hingeJointAnchorPrefab, transform.position, Quaternion.identity);
+            var hingeJointAnchor = hingeJointAnchorGameObject.GetComponent<HingeJointAnchor>();
+            hingeJointAnchor.Initialize(transform);
             newHingeJoint.Initialize(hingeJointAnchor, index);
             _hingeJoints[index] = newHingeJoint;
         }
