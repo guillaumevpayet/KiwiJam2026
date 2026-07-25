@@ -42,7 +42,7 @@ public class StringingController : MonoBehaviour
         var mousePosition = Mouse.current.position.ReadValue();
         var ray = _mainCamera.ScreenPointToRay(mousePosition);
 
-        if (!Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, LayerMask.GetMask("Climbable")))
+        if (!Physics.SphereCast(ray.origin, 1, ray.direction, out var hitInfo, Mathf.Infinity, LayerMask.GetMask("Climbable")))
         {
             Destroy(_pointer);
             _pointer = null;

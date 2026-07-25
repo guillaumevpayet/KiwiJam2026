@@ -31,12 +31,12 @@ public class DefeatScreen : MonoBehaviour
 
     private void OnRetryGameClick(ClickEvent evt)
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(CurrentLevel.Level);
     }
 
     private void OnReturnToMenuClick(ClickEvent evt)
     {
-        Debug.Log("Try again coward!");
+        SceneManager.LoadScene("Menu");
     }
 
 
