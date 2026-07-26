@@ -46,8 +46,8 @@ public class LevelSelect : MonoBehaviour
 
     private void OnLevel1Click(ClickEvent evt)
     {
-        CurrentLevel.Level = "Game";
-        SceneManager.LoadScene("Game");
+        CurrentLevel.Level = "Level4";
+        SceneManager.LoadScene("Level4");
     }
 
     private void OnLevel2Click(ClickEvent evt)
@@ -57,14 +57,14 @@ public class LevelSelect : MonoBehaviour
     }
     private void OnLevel3Click(ClickEvent evt)
     {
-        CurrentLevel.Level = "Level3";
-        SceneManager.LoadScene("Level3");
+        CurrentLevel.Level = "game";
+        SceneManager.LoadScene("game");
     }
 
     private void OnLevel4Click(ClickEvent evt)
     {
-        CurrentLevel.Level = "Level4";
-        SceneManager.LoadScene("Level4");
+        CurrentLevel.Level = "level3";
+        SceneManager.LoadScene("Level3");
     }
 
     private void OnReturnClick(ClickEvent evt)
