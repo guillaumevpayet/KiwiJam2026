@@ -139,6 +139,6 @@ public class StringingController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        _audioSource.PlayOneShot(bounce, 0.1f);
+        _audioSource.PlayOneShot(bounce, 0.05f);
     }
 }
