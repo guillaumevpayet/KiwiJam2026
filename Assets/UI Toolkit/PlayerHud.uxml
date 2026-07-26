@@ -12,9 +12,11 @@
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="Container" style="flex-grow: 1; justify-content: flex-end;">
-                <ui:ProgressBar value="22" title="Level Progress" name="LevelProgress" enabled="false" class="levelProgress" style="height: auto;"/>
+                <ui:ProgressBar value="22" title="Level Progress" name="LevelProgress" enabled="true" class="levelProgress" style="height: auto; visibility: hidden;"/>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:Slider label="" value="42" high-value="100" direction="Vertical" focusable="false" name="LevelProgress2"/>
+        <ui:VisualElement style="flex-grow: 1; align-items: stretch; align-content: stretch; flex-direction: column; width: 50px; max-width: 50px; justify-content: space-around; align-self: stretch;">
+            <ui:Slider label="" value="42" high-value="100" direction="Vertical" focusable="false" name="LevelProgress2" style="align-items: center; align-content: flex-start; align-self: auto; flex-grow: 1;"/>
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

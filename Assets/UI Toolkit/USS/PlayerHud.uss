@@ -9,3 +9,24 @@
     margin-right: 40px;
     margin-left: 40px;
 }
+
+.slider {
+}
+
+.unity-base-slider__dragger {
+    background-image: url("project://database/Assets/UI%20Toolkit/UISprites/yarn_ball.png?fileID=2800000&guid=d753dbfa7be30fc84ad24cca2d225ff5&type=3#yarn_ball");
+    background-size: 100% 100%;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(55, 55, 55, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+    padding-right: 0;
+    right: auto;
+    align-items: center;
+    transform-origin: center;
+    margin-left: -25px;
+    scale: 2 2 2;
+}
