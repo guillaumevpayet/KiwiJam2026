@@ -1,11 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 public class StringingController : MonoBehaviour
 {
     [SerializeField] private GameObject jointPrefab;
     [SerializeField] private GameObject pointerPrefab;
+    [SerializeField] private AudioClip bounce;
+    [SerializeField] private AudioClip snap;
+    [SerializeField] private AudioClip splat;
     
     private PlayerInput _playerInput;
     private Rigidbody _rigidbody;
@@ -27,6 +31,7 @@ public class StringingController : MonoBehaviour
     private void Start()
     {
         _playerInput.onActionTriggered += OnActionTriggered;
+        Debug.Log("Player input connected");
         _mainCamera = Camera.main;
 
         if (_mainCamera != null)
@@ -102,6 +107,9 @@ public class StringingController : MonoBehaviour
         {
             return;
         }
+
+        Debug.Log($"Something is happening with {actionName}.");
+        Debug.Log(context);
 
         var joint = _joints[index];
         
