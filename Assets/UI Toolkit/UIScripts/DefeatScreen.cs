@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class DefeatScreen : MonoBehaviour
 {
@@ -21,6 +22,16 @@ public class DefeatScreen : MonoBehaviour
 
         menuButton = root.Q<Button>("Menu");
         menuButton.RegisterCallback<ClickEvent>(OnReturnToMenuClick);
+        
+        // Loading the video
+        var videoPath = System.IO.Path.Combine(
+            Application.streamingAssetsPath, 
+            "defeat_animation.webm"
+        );
+        
+        var videoPlayer = GetComponent<VideoPlayer>();
+        videoPlayer.url = videoPath;
+        videoPlayer.Play();
     }
 
     private void OnDisable()
