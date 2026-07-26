@@ -50,7 +50,7 @@ public class PlayerHud : MonoBehaviour
         levelProgress.value = player.transform.position.y;
         levelProgress2.value = player.transform.position.y;
 
-        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        if (Keyboard.current.rKey.wasPressedThisFrame)
         {
             SceneManager.LoadScene("Defeat");
         }
