@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: e681b7d5ca2bccf999e65fdf0a5762ff
+guid: 020bd592b4d7f3441bb27b2b8461cf9d
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 2
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+  userData:
+  assetBundleName:
+  assetBundleVariant:
   script: {fileID: 11500000, guid: 804e1ce4c496647cfa3f1a1134187c71, type: 3}
   _removeEmptyRootObjects: 1
   _scaleFactor: 1

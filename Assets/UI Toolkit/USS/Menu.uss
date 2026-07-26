@@ -2,15 +2,29 @@
 }
 
 .title {
-    font-size: 100px;
+    font-size: 150px;
 }
 
 .button {
-    width: 400px;
-    height: 100px;
+    width: 600px;
+    height: 190px;
     font-size: 50px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
+    transition-duration: 0.3s;
+    background-image: url("project://database/Assets/UI%20Toolkit/UISprites/36A75ECC-88C3-4742-8B68-82EFE41E45DE.png?fileID=2800000&guid=e1c5ecf26068b3c41b4c627487536646&type=3#36A75ECC-88C3-4742-8B68-82EFE41E45DE");
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(255, 255, 255, 0);
+    border-right-color: rgba(255, 255, 255, 0);
+    border-top-color: rgba(255, 255, 255, 0);
+    border-bottom-color: rgba(255, 255, 255, 0);
+    padding-bottom: 21px;
+}
+
+.button:hover {
+    scale: 1 1;
+    background-image: url("project://database/Assets/UI%20Toolkit/UISprites/23A63AB7-FFAC-4888-AAC1-8D4E083F0143.png?fileID=2800000&guid=6c3abe9fc9e95a54ba632153712bc8d8&type=3#23A63AB7-FFAC-4888-AAC1-8D4E083F0143");
 }
