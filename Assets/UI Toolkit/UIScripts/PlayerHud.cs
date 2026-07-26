@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
@@ -48,6 +49,11 @@ public class PlayerHud : MonoBehaviour
         }
         levelProgress.value = player.transform.position.y;
         levelProgress2.value = player.transform.position.y;
+
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            SceneManager.LoadScene("Defeat");
+        }
     }
 
     private void HealthDrain()
