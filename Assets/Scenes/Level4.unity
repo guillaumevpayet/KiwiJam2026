@@ -5805,7 +5805,6 @@ GameObject:
   - component: {fileID: 2024694255}
   - component: {fileID: 2024694254}
   - component: {fileID: 2024694253}
-  - component: {fileID: 2024694256}
   m_Layer: 5
   m_Name: PlayerHud
   m_TagString: Untagged

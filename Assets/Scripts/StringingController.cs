@@ -31,6 +31,7 @@ public class StringingController : MonoBehaviour
     private void Start()
     {
         _playerInput.onActionTriggered += OnActionTriggered;
+        Debug.Log("Player input connected");
         _mainCamera = Camera.main;
 
         if (_mainCamera != null)
@@ -106,6 +107,9 @@ public class StringingController : MonoBehaviour
         {
             return;
         }
+
+        Debug.Log($"Something is happening with {actionName}.");
+        Debug.Log(context);
 
         var joint = _joints[index];
         

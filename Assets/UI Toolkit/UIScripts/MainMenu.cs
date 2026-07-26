@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using UnityEngine.Video;
 
 public class MainMenu : MonoBehaviour
 {
@@ -30,6 +31,16 @@ public class MainMenu : MonoBehaviour
         quitButton.RegisterCallback<ClickEvent>(OnQuitClick);
 
         select.rootVisualElement.visible = false;
+        
+        // Loading the video
+        var videoPath = System.IO.Path.Combine(
+            Application.streamingAssetsPath, 
+            "title_animation.webm"
+        );
+        
+        var videoPlayer = GetComponent<VideoPlayer>();
+        videoPlayer.url = videoPath;
+        videoPlayer.Play();
     }
 
     void OnDisable()
