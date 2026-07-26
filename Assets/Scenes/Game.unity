@@ -1182,6 +1182,8 @@ MonoBehaviour:
   hpDrainInterval: 5
   player: {fileID: 770507216}
   victoryHeight: 27
+  alive: {fileID: 2800000, guid: 582779c80fc0a6848adefd5232a1f896, type: 3}
+  dead: {fileID: 2800000, guid: 25291a12c0babfa45ac9eff2ba30c4f2, type: 3}
 --- !u!114 &2024694254
 MonoBehaviour:
   m_ObjectHideFlags: 0

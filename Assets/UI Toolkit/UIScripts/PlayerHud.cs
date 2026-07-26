@@ -9,6 +9,9 @@ public class PlayerHud : MonoBehaviour
     public int hpDrainInterval;
     public GameObject player;
     public int victoryHeight;
+    public Texture alive;
+    public Texture dead;
+
 
     private List<Image> hpPips = new List<Image>();
     private int hpLeft = 5;
@@ -59,7 +62,7 @@ public class PlayerHud : MonoBehaviour
         {
             if (hpLeft < 5)
             {
-                hpPips[hpLeft].visible = true;
+                hpPips[hpLeft].image = alive;
                 hpLeft += 1;
             }
         }
@@ -72,7 +75,7 @@ public class PlayerHud : MonoBehaviour
             else
             {
                 hpLeft -= 1;
-                hpPips[hpLeft].visible = false;
+                hpPips[hpLeft].image = dead;
             }
         }
     }
