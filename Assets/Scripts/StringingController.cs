@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -14,6 +15,7 @@ public class StringingController : MonoBehaviour
     private PlayerInput _playerInput;
     private Rigidbody _rigidbody;
     private LineRenderer _lineRenderer;
+    private AudioSource _audioSource;
     
     private Camera _mainCamera;
     
@@ -25,6 +27,7 @@ public class StringingController : MonoBehaviour
         _playerInput = GetComponent<PlayerInput>();
         _rigidbody = GetComponent<Rigidbody>();
         _lineRenderer = GetComponent<LineRenderer>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -124,11 +127,18 @@ public class StringingController : MonoBehaviour
             var newJoint = jointGameObject.GetComponent<JointController>();
             newJoint.Initialize(_rigidbody, index);
             _joints[index] = newJoint;
+            _audioSource.PlayOneShot(snap);
         }
         else if (context.canceled && joint != null)
         {
             Destroy(joint.gameObject);
             _joints[index] = null;
+            _audioSource.PlayOneShot(snap, 0.5f);
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        _audioSource.PlayOneShot(bounce, 0.1f);
     }
 }
